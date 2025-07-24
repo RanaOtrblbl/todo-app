@@ -38,10 +38,9 @@ class ProjectsController < ApplicationController
        else
         render :edit
        end
-
     end
 
-  
+
     def destroy
         @project = Project.find(params[:id])
 
@@ -58,6 +57,4 @@ class ProjectsController < ApplicationController
     def project_params
         params.require(:project).permit(:name)
     end
-
-
 end
