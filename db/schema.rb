@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_28_103619) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_31_071254) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active"
+    t.boolean "active", default: true, null: false
   end
 
   create_table "todos", force: :cascade do |t|
@@ -25,5 +25,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_28_103619) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false, null: false
     t.integer "priority", default: 1, null: false
+    t.integer "project_id", null: false
+    t.index ["project_id"], name: "index_todos_on_project_id"
   end
+
+  add_foreign_key "todos", "projects"
 end

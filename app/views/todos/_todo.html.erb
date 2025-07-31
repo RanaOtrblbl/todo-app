@@ -7,4 +7,19 @@
     <strong class="block font-medium mb-1">Description:</strong>
     <%= todo.description %>
   </div>
+
+ <div>
+    <strong class="block font-medium mb-1">Completed:</strong>
+    <%= todo.completed %>
+  </div>
+
+   <div>
+    <strong class="block font-medium mb-1">Priority:</strong>
+    <%= todo.priority %>
+  </div>
+
+   <div>
+    <strong class="block font-medium mb-1">Project:</strong>
+    <%= link_to todo.project.name, project_path(todo.project) %>
+  </div>
 </div>
