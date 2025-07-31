@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Ekstil: Formun sade görünmesi için bazı temel düzenlemeler */
 input[type="text"],
 textarea {
