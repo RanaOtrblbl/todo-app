@@ -1,25 +1,29 @@
-<div id="<%= dom_id todo %>" class="w-full sm:w-auto my-5 space-y-5">
+<div id="<%= dom_id todo %>" class="w-full sm:w-auto my-5 p-6 bg-gray-100 border border-gray-300 rounded-lg shadow">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">Todo Details</h2>
+
   <div>
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= todo.name %>
+    <strong class="block font-medium mb-1 text-gray-600">Name:</strong>
+    <p class="text-gray-800"><%= todo.name %></p>
   </div>
+
   <div>
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= todo.description %>
+    <strong class="block font-medium mb-1 text-gray-600">Description:</strong>
+    <p class="text-gray-800"><%= todo.description.to_s.html_safe %></p>
   </div>
 
- <div>
-    <strong class="block font-medium mb-1">Completed:</strong>
-    <%= todo.completed %>
+  <div>
+    <strong class="block font-medium mb-1 text-gray-600">Completed:</strong>
+    <p class="text-gray-800"><%= todo.completed %></p>
   </div>
 
-   <div>
-    <strong class="block font-medium mb-1">Priority:</strong>
-    <%= todo.priority %>
+  <div>
+    <strong class="block font-medium mb-1 text-gray-600">Priority:</strong>
+    <p class="text-gray-800"><%= todo.priority %></p>
   </div>
 
-   <div>
-    <strong class="block font-medium mb-1">Project:</strong>
-    <%= link_to todo.project.name, project_path(todo.project) %>
+  <div>
+    <strong class="block font-medium mb-1 text-gray-600">Project:</strong>
+    <p><%= link_to todo.project.name, project_path(todo.project), class: "text-blue-600 underline" %></p>
   </div>
 </div>
+

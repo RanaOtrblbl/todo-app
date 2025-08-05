@@ -19,7 +19,7 @@
   <!-- Description -->
   <div class="my-5">
     <%= form.label :description, class: "block font-medium mb-1" %>
-    <%= form.text_area :description, rows: 4, class: "block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 #{'border-red-400' if todo.errors[:description].any?}" %>
+   <%= form.rich_text_area :description, class: "block w-full rounded-md border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" %>
   </div>
 
   <!-- Completed -->
