@@ -4,6 +4,10 @@
   <% if user_signed_in? %>
   Hoş geldin <%= current_user.email %>!
   <%= link_to 'Çıkış Yap', destroy_user_session_path, method: :delete %>
+  <div class="mt-6 space-x-4">
+      <%= link_to 'Projects', projects_path, class: "text-lg font-medium text-indigo-600 hover:underline" %>
+      <%= link_to 'Todos', todos_path, class: "text-lg font-medium text-indigo-600 hover:underline" %>
+    </div>
 <% else %>
   <%= link_to 'Kayıt Ol', new_user_registration_path %> |
   <%= link_to 'Giriş Yap', new_user_session_path %>

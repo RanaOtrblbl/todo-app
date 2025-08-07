@@ -9,6 +9,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
+  <nav class="bg-white py-4 px-6 shadow-md">
+      <% if user_signed_in? %>
+      <span class="text-gray-700 font-bold text-purple-400 ">Hadi tüm todoları tamamlayalım!</span>
+        <div class="container mx-auto flex justify-center items-center space-x-4">
+          <%= link_to "Projects", projects_path, class: "text-blue-500 hover:text-blue-600 text-lg font-medium" %>
+          <%= link_to "Todos", todos_path, class: "text-blue-500 hover:text-blue-600 text-lg font-medium" %>
+        </div>
+      <% else %>
+        <div class="container mx-auto flex justify-center items-center space-x-6">
+          <%= link_to "Giriş Yap", new_user_session_path, class: "text-blue-600 hover:underline text-lg" %>
+          <%= link_to "Kayıt Ol", new_user_registration_path, class: "text-blue-600 hover:underline text-lg" %>
+        </div>
+      <% end %>
+    </nav>
+
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>

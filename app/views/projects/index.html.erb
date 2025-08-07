@@ -1,7 +1,15 @@
-<h1>Projects</h1>
+
+<h1 class="text-4xl font-bold mb-4">Projects</h1>
+<p>Burada projelerin listelenir.</p>
 
 <ul>
   <% @projects.each do |project| %>
    <li><%= link_to project.name, project_path(project) %></li>
   <%end%>
 </ul>
+
+<div class="flex justify-right mt-4">
+  <%= link_to "New Project", new_project_path, class: "rounded-md px-3.5 py-2.5 bg-purple-300 hover:bg-purple-400 text-white font-medium" %>
+</div>
+
+
