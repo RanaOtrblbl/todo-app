@@ -10,16 +10,24 @@
     <p>Burada görevlerin listelenir.</p>
     <%= link_to "New todo", new_todo_path, class: "rounded-md px-3.5 py-2.5 bg-purple-300 hover:bg-purple-400 text-white block font-medium" %>
   </div>
+<!--filtreleme-->
+<%= search_form_for @q, url: todos_path, method: :get, html: { class: "mb-6 flex gap-3 items-center" } do |f| %>
+    <%= f.label :name_cont, "Ara (İsim)", class: "sr-only" %>
+    <%= f.search_field :name_cont, placeholder: "Todo ismi ile ara...", class: "w-60 rounded-md border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" %>
+  
+    <%= f.submit "Ara", class: "px-4 py-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md" %>
+    <%= link_to "Temizle", todos_path, class: "px-4 py-2 bg-gray-200 rounded-md" %>
+<% end %>
 
+<!-- Kartların listelendiği kısım -->
+<div class="flex flex-wrap gap-4">
+  <%= render @todos %>
+</div>
   <div id="todos" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @todos.any? %>
       <% @todos.each do |todo| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render todo %>
           <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", todo, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Edit", edit_todo_path(todo), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Destroy", todo, method: :delete, class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-black bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
       <% end %>

@@ -71,3 +71,5 @@ end
 gem 'devise'
 
 gem 'image_processing', '~> 1.2'
+
+gem 'ransack'

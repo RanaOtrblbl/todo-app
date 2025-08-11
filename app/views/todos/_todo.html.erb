@@ -1,29 +1,45 @@
-<div class="<%= priority_bg_class(todo.priority) %> p-6 rounded-md shadow-md h-full min-h-96 min-w-100 flex flex-col justify-between">
-  <h2 class="text-xl font-semibold text-gray-800 mb-4">Todo Details</h2>
-
+<div id="<%= dom_id(todo) %>" class="p-6 rounded-md shadow-md min-h-[220px] flex flex-col justify-between
+  <%= priority_bg_class(todo.priority) %>
+  <%= 'opacity-60' if todo.completed %>
+  <%= 'border-2 border-red-500' if todo.deadline.present? && todo.deadline < Date.today %>">
+  
   <div>
-    <strong class="block font-medium mb-1 text-gray-600">Name:</strong>
-    <p class="text-gray-800"><%= todo.name %></p>
+    <h3 class="text-lg font-semibold mb-3">Todo Details</h3>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Name:</strong>
+      <p class="text-gray-800"><%= todo.name %></p>
+    </div>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Description:</strong>
+      <p class="text-gray-800"><%= todo.description.to_s.html_safe %></p>
+    </div>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Completed:</strong>
+      <p class="text-gray-800"><%= todo.completed %></p>
+    </div>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Deadline:</strong>
+      <p class="text-gray-800"><%= todo.deadline.present? ? todo.deadline.strftime('%d %B %Y') : 'Belirtilmedi' %></p>
+    </div>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Priority:</strong>
+      <p class="text-gray-800"><%= todo.priority %></p>
+    </div>
+
+    <div class="mb-2 flex flex-1">
+      <strong class="block font-medium text-gray-600">Project:</strong>
+      <p class="text-gray-800"><%= link_to todo.project.name, project_path(todo.project), class: "text-blue-600 underline" %></p>
+    </div>
   </div>
 
-  <div>
-    <strong class="block font-medium mb-1 text-gray-600">Description:</strong>
-    <p class="text-gray-800"><%= todo.description.to_s.html_safe %></p>
-  </div>
-
-  <div>
-    <strong class="block font-medium mb-1 text-gray-600">Completed:</strong>
-    <p class="text-gray-800"><%= todo.completed %></p>
-  </div>
-
-  <div>
-    <strong class="block font-medium mb-1 text-gray-600">Priority:</strong>
-    <p class="text-gray-800"><%= todo.priority %></p>
-  </div>
-
-  <div class="flex flex-1 ">
-    <strong class="block font-medium mb-1 text-gray-600">Project:</strong>
-    <p><%= link_to todo.project.name, project_path(todo.project), class: "text-blue-600 underline" %></p>
+  <div class="mt-4 flex space-x-2">
+    <%= link_to 'Show', todo, class: "px-3 py-1 bg-white rounded shadow-sm text-sm" %>
+    <%= link_to 'Edit', edit_todo_path(todo), class: "px-3 py-1 bg-white rounded shadow-sm text-sm"%>
+    <%= button_to 'Destroy', todo, method: :delete, class: "px-3 py-1 bg-red-100 rounded text-sm" , data: { turbo_confirm: "Are you sure?" } %>
   </div>
 </div>
-

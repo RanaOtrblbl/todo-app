@@ -3,12 +3,10 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    @q = Todo.ransack(params[:q])            #@q ransack arama nesnesi (view'da form için
+    @todos = @q.result(distinct: true).order(created_at: :desc)
   end
-
-  # GET /todos/1 or /todos/1.json
-  def show
-  end
+  
 
   # GET /todos/new
   def new
@@ -58,13 +56,13 @@ class TodosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_todo
       @todo = Todo.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
-    def todo_params
-      params.expect(todo: [ :name, :description, :completed, :priority, :project_id])
-    end
+  
+      def todo_params
+        params.expect(todo: [ :name, :description, :completed, :priority, :project_id, :deadline])
+      end
+
 end
