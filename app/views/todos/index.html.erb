@@ -8,7 +8,7 @@
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Todos</h1>
     <p>Burada görevlerin listelenir.</p>
-    <%= link_to "New todo", new_todo_path, class: "rounded-md px-3.5 py-2.5 bg-purple-300 hover:bg-purple-400 text-white block font-medium" %>
+    <%= link_to "New todo", new_todo_path, class: "rounded-md px-3.5 py-2.5 bg-gray-300 hover:bg-purple-200 text-white block font-medium" %>
   </div>
 <!--filtreleme-->
 <%= search_form_for @q, url: todos_path, method: :get, html: { class: "mb-6 flex gap-3 items-center" } do |f| %>
@@ -23,7 +23,6 @@
 <div class="flex flex-wrap gap-4">
   <%= render @todos %>
 </div>
-  <div id="todos" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @todos.any? %>
       <% @todos.each do |todo| %>
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
