@@ -1,7 +1,7 @@
-<div id="<%= dom_id(todo) %>" class="p-6 rounded-md shadow-md min-h-[220px] flex flex-col justify-between
+<div id="<%= dom_id(todo) %>" class="p-10 rounded-md shadow-md min-h-[250px] max-w-[450px] flex flex-col justify-between
   <%= priority_bg_class(todo.priority) %>
   <%= 'opacity-100' if todo.completed %>
-  <%= 'border-2 border-red-500' if todo.deadline.present? && todo.deadline < Date.today %>">
+  <%= 'border-2 border-red-300' if todo.deadline.present? && todo.deadline < Date.today %>">
   
   <div>
     <h3 class="text-lg font-semibold mb-3">Todo Details</h3>
