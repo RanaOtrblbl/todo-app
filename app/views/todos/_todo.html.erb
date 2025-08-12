@@ -1,15 +1,13 @@
-<div id="<%= dom_id(todo) %>" class="p-10 rounded-md shadow-md min-h-[250px] max-w-[450px] flex flex-col justify-between
-  <%= priority_bg_class(todo.priority) %>
-  <%= 'opacity-100' if todo.completed %>
-  <%= 'border-2 border-red-300' if todo.deadline.present? && todo.deadline < Date.today %>">
-  
-  <div>
-    <h3 class="text-lg font-semibold mb-3">Todo Details</h3>
+<div id="<%= dom_id(todo) %>" 
+     class="p-15 rounded-md shadow-md min-h-[250px] max-w-[450px] flex flex-col justify-between
+       <%= priority_bg_class(todo.priority) %>
+       <%= 'opacity-100' if todo.completed %>
+       <%= todo.completed ? 'border-2 border-green-300' : (todo.deadline.present? && todo.deadline < Date.today ? 'border-2 border-red-300' : '') %>">
 
-    <div class="mb-2 flex flex-1">
-      <strong class="block font-medium text-gray-600">Name:</strong>
-      <p class="text-gray-800"><%= todo.name %></p>
-    </div>
+  <div>
+    <h3 class="text-lg font-semibold mb-3"><%= todo.name %></h3>
+
+
 
     <div class="mb-2 flex flex-1">
       <strong class="block font-medium text-gray-600">Description:</strong>
@@ -38,8 +36,10 @@
   </div>
 
   <div class="mt-4 flex space-x-2">
-    <%= link_to 'Show', todo, class: "px-3 py-1 bg-white rounded shadow-sm text-sm" %>
-    <%= link_to 'Edit', edit_todo_path(todo), class: "px-3 py-1 bg-white rounded shadow-sm text-sm"%>
-    <%= button_to 'Destroy', todo, method: :delete, class: "px-3 py-1 bg-red-100 rounded text-sm" , data: { turbo_confirm: "Are you sure?" } %>
+    <%= link_to 'Show', todo, class: "px-3 py-1 border border-gray-400 bg-white text-black rounded shadow-sm text-sm hover:bg-gray-100" %>
+    <%= link_to 'Edit', edit_todo_path(todo), class: "px-3 py-1 border border-gray-400 bg-white text-black rounded shadow-sm text-sm hover:bg-gray-100" %>
+    <%= button_to 'Destroy', todo, method: :delete, class: "px-3 py-1 border border-gray-400 bg-white text-black rounded shadow-sm text-sm hover:bg-gray-100" , data: { turbo_confirm: "Are you sure?" } %>
   </div>
+
+
 </div>

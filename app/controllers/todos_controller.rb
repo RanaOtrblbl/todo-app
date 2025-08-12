@@ -64,5 +64,4 @@ class TodosController < ApplicationController
       def todo_params
         params.expect(todo: [ :name, :description, :completed, :priority, :project_id, :deadline])
       end
-
 end

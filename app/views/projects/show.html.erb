@@ -1,11 +1,12 @@
-<h1><%= @project.name %><h1>
-<ul>
- <% @project.todos.each do |todo| %>
-  <li>
-    <%= link_to todo.name, todo_path(todo) %>
-    <% if todo.completed %>✅<%end%>
-  </li>
-  <%end%>   
+<h1 class="text-2xl font-bold mb-4"><%= @project.name %></h1>
+
+<ul class="list-disc list-inside space-y-1">
+  <% @project.todos.each do |todo| %>
+    <li>
+      <%= link_to todo.name, todo_path(todo), class: "text-blue-600 hover:underline" %>
+      <% if todo.completed %>✅<% end %>
+    </li>
+  <% end %>   
 </ul>
 
-<%= button_to "Delete Project", project_path(@project), method: :delete%>
+<%= button_to "Delete Project", project_path(@project), method: :delete, class: "mt-4 bg-red-500 text-black px-4 py-2 rounded hover:bg-red-600" %>

@@ -12,7 +12,7 @@
 
   <nav class="bg-white py-4 px-6 shadow-md">
       <% if user_signed_in? %>
-      <span class="text-gray-700 font-bold text-black-400 pt-px-8 ">Hadi tüm todoları tamamlayalım!</span>
+      <span class="text-gray-700 font-bold text-orange-400 pt-px-8 ">Hadi tüm todoları tamamlayalım!</span>
         <div class="container mx-auto flex justify-center items-center space-x-4">
           <%= link_to "Projects", projects_path, class: "text-black-500 hover:text-blue-600 text-lg font-medium no-underline" %>
           <%= link_to "Todos", todos_path, class: "text-black-500 hover:text-blue-600 text-lg font-medium no-underline" %>
@@ -27,14 +27,12 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
+  
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -46,14 +44,7 @@
   <body class="bg-gray-100 text-gray-900">
     <div class="container mx-auto px-4 py-4">
       <h1 class="text-4xl font-bold mb-6 text-center">Todo List</h1>
-    <% if notice %>
-     <p style="color: green;"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-     <p style="color: red;"><%= alert %></p>
-    <% end %>
-
+   
       <%= yield %>
     </main>
     </div>
